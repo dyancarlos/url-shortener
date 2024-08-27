@@ -38,13 +38,17 @@ RSpec.describe "Urls", type: :request do
 
   describe "GET /show" do
     context 'when valid short url code' do
-      before do
-        FactoryBot.create(:short_url, original_url: 'http://google.com', short_url_code: 'abc')
-      end
+      let!(:short_url) { FactoryBot.create(:short_url, original_url: 'http://google.com', short_url_code: 'abc') }
 
       it 'redirects to the original url' do
         get '/abc'
         expect(response).to redirect_to 'http://google.com'
+      end
+
+      it 'increases the access count' do
+        expect do
+          get '/abc'
+        end.to change { short_url.reload.access_count }.from(0).to(1)
       end
     end
 

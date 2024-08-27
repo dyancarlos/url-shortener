@@ -5,7 +5,7 @@ class UrlsController < ApplicationController
 
   def show
     @url = ShortUrl.find_by!(short_url_code: params[:url_code])
-
+    Urls::CountAccessService.new(@url).call
     redirect_to @url.original_url, allow_other_host: true
   end
 

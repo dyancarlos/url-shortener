@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_27_140331) do
   create_table "short_urls", force: :cascade do |t|
     t.string "original_url", null: false
     t.string "short_url_code", null: false
+    t.integer "access_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
