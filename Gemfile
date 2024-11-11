@@ -38,7 +38,7 @@ gem "validate_url"
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 6.0.2"
+  gem "rspec-rails", "~> 7.1.0"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
